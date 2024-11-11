@@ -175,5 +175,51 @@ class Arrays {
 		System.out.println("Длина table1[1]: " + table1[1].length);
 		System.out.println("Длина table1[2]: " + table1[2].length);
 		System.out.println("Длина table1[3]: " + table1[3].length);
+
+		//Цикл for-each
+		System.out.println();
+		int[] nums5 = {1,2,3,4,5,6,7,8,9,10,11,12};
+		int sum = 0;
+
+		for(int x1 : nums5) {
+			System.out.println("Значение: " + x1);
+			sum += x1;
+			if(x1 == 5) 
+				break;
+		}
+		System.out.println("Сумма первых шести элементов массива nums5: " + sum);
+		
+		System.out.println();
+		//Подсчёт суммы элементов в двумерном массиве
+		int sum1 = 0;
+		int[][] nums6 = new int[3][5];
+
+		for(int i = 0; i<nums6.length; i++)
+			for (int j1=0; j1<nums6[i].length; j1++)
+				nums6[i][j1] = (i+1)*(j1+1);
+
+		//Выводим элементы массивы и считаем сумму
+		for(int[] x1 : nums6)
+			for(int y : x1) {
+				System.out.println("Значение: " + y);
+				sum1 += y;
+			}
+		System.out.println("Сумма: " + sum1);
+
+		System.out.println();
+		//Поиск при помощи цикла "for-each"
+		int val = 19;
+		boolean found = false;
+
+		for(int x1 : nums5) {
+			if(x1 == val) {
+				found = true;
+				break;
+			}
+		}
+		if(found)
+			System.out.println("Значение " + val + " найдено");
+		else
+			System.out.println("Значение " + val + " не найдено");
 	}
 }
