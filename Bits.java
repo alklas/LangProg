@@ -1,4 +1,28 @@
 import java.util.Random;
+class ShowBits {
+	int numbits;
+	ShowBits(int n) {
+		numbits = n;
+	}
+	void show(long val) {
+		long mask = 1;
+
+		//Сдвиг влева значения 1
+		mask <<= numbits-1;
+
+		int spacer = 0;
+		for(; mask !=0; mask >>>= 1) {
+			if((val & mask) != 0) System.out.print("1");
+			else System.out.print("0");
+			spacer++;
+			if((spacer % 8) == 0) {
+				System.out.print(" ");
+				spacer = 0;
+			}
+		}
+		System.out.println();
+	}
+}
 class Bits {
 	public static void main(String[] args) {
 		//Сброс 6-го бита - изменение регистра латиницы
@@ -101,6 +125,37 @@ class Bits {
                         }
                 System.out.println();
                 val2 = val2 >> 1; //сдвиг вправо
-                }
+		}
+		
+		//Использование класса ShowBits
+		System.out.println();
+		ShowBits b3 = new ShowBits(8);
+		ShowBits i3 = new ShowBits(32);
+		ShowBits li3 = new ShowBits(64);
+
+		System.out.println("Двоичное представление значения 123: ");
+		b3.show(123);
+		System.out.println("Двоичное представление значения 12323: ");
+                i3.show(12323);
+		System.out.println("Двоичное представление значения 123111111111: ");
+                li3.show(123111111111L);
+
+		//Операция ?
+		//Получение модуля числа
+		System.out.println();
+		int absval;
+		val = -32;
+		absval = val < 0 ? -val : val;
+		System.out.println("val и absval: " + val + " " + absval);
+
+		//Предотвращение деления на 0:
+		System.out.println();
+		
+		int res;
+		for(int i = -5; i < 6; i++) {
+			res = i != 0 ? 100 / i : 0;
+			if(i != 0) 
+				System.out.println("100 / " + i + " равно " + res);
+		}
 	}
 }
